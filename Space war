@@ -1,0 +1,45 @@
+var downpl;
+var bullets = [];
+
+
+
+function setup() {
+  createCanvas(600, 400);
+ downpl = new Downpl();
+ bullet = new Bullet(width / 2, height / 2);
+
+}
+
+function draw() {
+  background(0);
+  downpl.show();
+  
+    fill(0, 255, 0);
+  
+ for (var i = 0; i < bullets.length; i++) {
+    bullets[i].show();
+    bullets[i].move();
+ }
+  
+  stroke(255);
+  
+  
+  if (keyIsDown(37)) {
+    downpl.move(-1);
+  }
+  if (keyIsDown(39)) {
+    downpl.move(1);
+  } 
+
+
+
+}
+
+
+function keyPressed() {
+    if (key === '/') {
+      var bullet = new Bullet(downpl.x + 30, height);
+      bullets.push(bullet);
+    }
+
+}
